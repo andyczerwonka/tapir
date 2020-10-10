@@ -1,5 +1,15 @@
 package sttp.tapir.json.json4s
 
+import org.json4s.Extraction._
+import org.json4s._
+import org.json4s.jackson.JsonMethods._
+import sttp.tapir.Codec.JsonCodec
+import sttp.tapir.DecodeResult.{Error, Value}
+import sttp.tapir.SchemaType._
+import sttp.tapir._
+
+import scala.util.{Failure, Success, Try}
+
 trait TapirJsonJson4s {
 
   implicit val formats: Formats
