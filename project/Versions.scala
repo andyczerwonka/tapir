@@ -25,4 +25,5 @@ object Versions {
   val playServer = "2.8.2"
   val tethys = "0.11.0"
   val vertx = "3.9.1"
+  val json4sJson = "3.7.0-M6"
 }

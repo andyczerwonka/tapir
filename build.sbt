@@ -95,6 +95,7 @@ lazy val rootProject = (project in file("."))
       sprayJson.projectRefs ++
       uPickleJson.projectRefs ++
       tethysJson.projectRefs ++
+      json4sJson.projectRefs ++
       openapiModel.projectRefs ++
       openapiCirce.projectRefs ++
       openapiCirceYaml.projectRefs ++
@@ -292,6 +293,19 @@ lazy val jsoniterScala: ProjectMatrix = (projectMatrix in file("json/jsoniter"))
     name := "tapir-jsoniter-scala",
     libraryDependencies ++= Seq(
       "com.github.plokhotnyuk.jsoniter-scala" %% "jsoniter-scala-core" % "2.6.2",
+      scalaTest % Test
+    )
+  )
+  .jvmPlatform(scalaVersions = allScalaVersions)
+  .dependsOn(core)
+
+lazy val json4sJson: ProjectMatrix = (projectMatrix in file("json/json4s"))
+  .settings(commonSettings)
+  .settings(
+    name := "tapir-json-json4s",
+    libraryDependencies ++= Seq(
+      "org.json4s" %% "json4s-jackson" % Versions.json4sJson,
+      "org.json4s" %% "json4s-ext" % Versions.json4sJson,
       scalaTest % Test
     )
   )
@@ -650,6 +664,7 @@ lazy val documentation: ProjectMatrix = (projectMatrix in file("generated-doc"))
     swaggerUiAkka,
     tethysJson,
     uPickleJson,
+    json4sJson,
     vertxServer,
     zio,
     zioServer
