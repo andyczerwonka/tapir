@@ -13,14 +13,10 @@ object TapirJsonJson4sCodec extends TapirJsonJson4s
 class TapirJsonJson4sTests extends AnyFlatSpec with Matchers {
   case class Customer(name: String, yearOfBirth: Int, lastPurchase: Option[Long])
 
-  object Customer {
-    implicit val rw: Format[Customer] = Json.format
-  }
-
-  val customerDecoder = TapirJsonPlayCodec.readsWritesCodec[Customer]
+  val customerDecoder = TapirJsonJson4sCodec.readsWritesCodec[Customer]
 
   def testEncodeDecode[T: Manifest: Schema: Validator](original: T): Assertion = {
-    val codec = TapirJsonPlayCodec.readsWritesCodec[T]
+    val codec = TapirJsonJson4sCodec.readsWritesCodec[T]
 
     val encoded = codec.encode(original)
     codec.decode(encoded) match {
