@@ -12,7 +12,9 @@ project/boot/
 project/plugins/project/
 .bloop
 .metals
+metals.sbt
 
 .idea*
+.vscode*
 
 file-uploads
